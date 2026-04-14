@@ -1,0 +1,472 @@
+import type {
+  Event,
+  FoodItem,
+  Notification,
+  OrderHistory,
+  QueueStatus,
+  StationeryItem,
+  UserProfile,
+  VendorCrowdIndicator,
+  VendorOrder,
+  VendorStats,
+  VendorTodaySummary,
+} from "../types";
+
+export const foodItems: FoodItem[] = [
+  {
+    id: "f1",
+    name: "Chicken Cheese Burger",
+    price: 120,
+    category: "Burgers",
+    image: "/assets/images/food-burger.jpg",
+    available: true,
+    description: "Juicy chicken patty with melted cheddar, lettuce & sauce",
+    prepTime: 8,
+  },
+  {
+    id: "f2",
+    name: "Masala Dosa",
+    price: 60,
+    category: "South Indian",
+    image: "/assets/images/food-dosa.jpg",
+    available: true,
+    description: "Crispy rice crepe with spiced potato filling & chutneys",
+    prepTime: 5,
+  },
+  {
+    id: "f3",
+    name: "Paneer Butter Masala",
+    price: 110,
+    category: "North Indian",
+    image: "/assets/images/food-paneer.jpg",
+    available: true,
+    description: "Rich tomato-butter curry with fresh cottage cheese",
+    prepTime: 10,
+  },
+  {
+    id: "f4",
+    name: "Veg Fried Rice",
+    price: 80,
+    category: "Rice",
+    image: "/assets/images/food-rice.jpg",
+    available: true,
+    description: "Wok-tossed basmati rice with seasonal vegetables",
+    prepTime: 7,
+  },
+  {
+    id: "f5",
+    name: "Cold Coffee",
+    price: 55,
+    category: "Beverages",
+    image: "/assets/images/food-coffee.jpg",
+    available: true,
+    description: "Creamy blended iced coffee with chocolate drizzle",
+    prepTime: 3,
+  },
+  {
+    id: "f6",
+    name: "Samosa (2 pcs)",
+    price: 20,
+    category: "Snacks",
+    image: "/assets/images/food-samosa.jpg",
+    available: false,
+    description: "Crispy pastry filled with spiced potatoes & peas",
+    prepTime: 2,
+  },
+  {
+    id: "f7",
+    name: "Pav Bhaji",
+    price: 70,
+    category: "Street Food",
+    image: "/assets/images/food-pavbhaji.jpg",
+    available: true,
+    description: "Spicy mixed vegetable mash with buttered toasted rolls",
+    prepTime: 6,
+  },
+  {
+    id: "f8",
+    name: "Pasta Arrabbiata",
+    price: 95,
+    category: "Continental",
+    image: "/assets/images/food-pasta.jpg",
+    available: true,
+    description: "Penne in spicy tomato sauce with fresh herbs",
+    prepTime: 9,
+  },
+];
+
+export const events: Event[] = [
+  {
+    id: "e1",
+    title: "TechFest 2026 — Hackathon",
+    description:
+      "24-hour coding marathon. Build, innovate, and win exciting prizes worth ₹50,000.",
+    date: "2026-04-20",
+    time: "09:00 AM",
+    venue: "Main Auditorium",
+    totalSeats: 200,
+    availableSeats: 43,
+    category: "Technical",
+    image: "/assets/images/event-hackathon.jpg",
+    price: 0,
+  },
+  {
+    id: "e2",
+    title: "Cultural Night — Kaleidoscope",
+    description:
+      "Annual cultural extravaganza with dance, music, and theatrical performances.",
+    date: "2026-04-25",
+    time: "06:00 PM",
+    venue: "Open-Air Theatre",
+    totalSeats: 500,
+    availableSeats: 212,
+    category: "Cultural",
+    image: "/assets/images/event-cultural.jpg",
+    price: 50,
+  },
+  {
+    id: "e3",
+    title: "Workshop: UI/UX Design Bootcamp",
+    description:
+      "Hands-on 2-day workshop on Figma, prototyping, and design thinking with industry experts.",
+    date: "2026-05-02",
+    time: "10:00 AM",
+    venue: "CS Seminar Hall",
+    totalSeats: 60,
+    availableSeats: 18,
+    category: "Workshop",
+    image: "/assets/images/event-workshop.jpg",
+    price: 200,
+  },
+  {
+    id: "e4",
+    title: "Sports Day — Inter-Dept Tournament",
+    description:
+      "Cricket, football, and badminton tournaments. Represent your department and win the trophy.",
+    date: "2026-05-10",
+    time: "08:00 AM",
+    venue: "Sports Ground",
+    totalSeats: 150,
+    availableSeats: 89,
+    category: "Sports",
+    image: "/assets/images/event-sports.jpg",
+    price: 0,
+  },
+];
+
+export const notifications: Notification[] = [
+  {
+    id: "n1",
+    type: "order",
+    title: "Order Ready! 🎉",
+    message:
+      "Your Chicken Cheese Burger & Cold Coffee are ready for pickup at Counter 3.",
+    timestamp: "2 min ago",
+    read: false,
+  },
+  {
+    id: "n2",
+    type: "event",
+    title: "TechFest Registration Closing",
+    message:
+      "Only 43 seats left for TechFest 2026 Hackathon. Register now to secure your spot!",
+    timestamp: "1 hour ago",
+    read: false,
+  },
+  {
+    id: "n3",
+    type: "system",
+    title: "Print Order Dispatched",
+    message:
+      "Your Book Mart print order #BM-2891 (20 pages, B&W) is ready. Collect from Counter 1.",
+    timestamp: "3 hours ago",
+    read: true,
+  },
+  {
+    id: "n4",
+    type: "promo",
+    title: "Combo Tuesday 🍔",
+    message:
+      "Get Burger + Cold Coffee for just ₹150 today only at Vidhyarthi Khana. Valid 12–3 PM.",
+    timestamp: "5 hours ago",
+    read: true,
+  },
+  {
+    id: "n5",
+    type: "order",
+    title: "Order Confirmed",
+    message:
+      "Your order #VK-1042 has been placed successfully. Estimated wait: 12 minutes.",
+    timestamp: "Yesterday",
+    read: true,
+  },
+];
+
+export const queueStatus: QueueStatus = {
+  orderId: "VK-1043",
+  position: 3,
+  totalInQueue: 8,
+  estimatedMinutes: 10,
+  status: "preparing",
+  itemName: "Paneer Butter Masala + Pav Bhaji",
+};
+
+export const userProfile: UserProfile = {
+  name: "Alex Kumar",
+  usn: "1MS22CS045",
+  email: "alex.kumar@bmsce.ac.in",
+  gmail: "nischal.student@gmail.com",
+  branch: "Computer Science & Engineering",
+  year: 3,
+  avatar: "AK",
+  phone: "+91 98765 43210",
+};
+
+export const orderHistory: OrderHistory[] = [
+  {
+    id: "VK-1042",
+    date: "Apr 12, 2026",
+    items: [
+      { name: "Chicken Cheese Burger", quantity: 1, price: 120 },
+      { name: "Cold Coffee", quantity: 1, price: 55 },
+    ],
+    total: 175,
+    status: "delivered",
+  },
+  {
+    id: "VK-1038",
+    date: "Apr 10, 2026",
+    items: [
+      { name: "Masala Dosa", quantity: 2, price: 60 },
+      { name: "Veg Fried Rice", quantity: 1, price: 80 },
+    ],
+    total: 200,
+    status: "delivered",
+  },
+  {
+    id: "VK-1031",
+    date: "Apr 8, 2026",
+    items: [{ name: "Paneer Butter Masala", quantity: 1, price: 110 }],
+    total: 110,
+    status: "delivered",
+  },
+  {
+    id: "VK-1025",
+    date: "Apr 5, 2026",
+    items: [
+      { name: "Pav Bhaji", quantity: 2, price: 70 },
+      { name: "Cold Coffee", quantity: 2, price: 55 },
+    ],
+    total: 250,
+    status: "cancelled",
+  },
+];
+
+// ─── Vendor Data ────────────────────────────────────────────────────────────
+
+export const vendorStats: VendorStats = {
+  pendingCount: 4,
+  preparingCount: 2,
+  completedToday: 18,
+  revenueToday: 1240,
+};
+
+export const vendorOrders: VendorOrder[] = [
+  {
+    id: "vo1",
+    orderNumber: "#1042",
+    customerName: "Riya Sharma",
+    items: [{ name: "Masala Dosa", quantity: 2 }],
+    price: 120,
+    timeAgo: "2 min ago",
+    status: "pending",
+  },
+  {
+    id: "vo2",
+    orderNumber: "#1041",
+    customerName: "Arjun Mehta",
+    items: [
+      { name: "Paneer Butter Masala", quantity: 1 },
+      { name: "Roti", quantity: 2 },
+    ],
+    price: 180,
+    timeAgo: "5 min ago",
+    status: "preparing",
+  },
+  {
+    id: "vo3",
+    orderNumber: "#1040",
+    customerName: "Priya Nair",
+    items: [
+      { name: "Veg Fried Rice", quantity: 1 },
+      { name: "Cold Coffee", quantity: 1 },
+    ],
+    price: 135,
+    timeAgo: "8 min ago",
+    status: "preparing",
+  },
+  {
+    id: "vo4",
+    orderNumber: "#1039",
+    customerName: "Karan Patel",
+    items: [{ name: "Chicken Cheese Burger", quantity: 1 }],
+    price: 120,
+    timeAgo: "11 min ago",
+    status: "ready",
+  },
+  {
+    id: "vo5",
+    orderNumber: "#1038",
+    customerName: "Sneha Rao",
+    items: [{ name: "Pav Bhaji", quantity: 2 }],
+    price: 140,
+    timeAgo: "14 min ago",
+    status: "pending",
+  },
+];
+
+export const vendorCrowdIndicator: VendorCrowdIndicator = {
+  level: "low",
+  activeOrders: 3,
+  avgWaitMinutes: 8,
+  percentage: 30,
+};
+
+export const vendorTodaySummary: VendorTodaySummary = {
+  pending: 4,
+  preparing: 2,
+  ready: 1,
+  completed: 18,
+  totalRevenue: 1240,
+};
+
+// ─── Stationery Data ─────────────────────────────────────────────────────────
+
+export const stationeryItems: StationeryItem[] = [
+  {
+    id: "s1",
+    name: "A4 Ruled Notebook",
+    category: "Notebooks",
+    description: "200 pages, hard cover, single-line ruling",
+    price: 40,
+    stock: 12,
+    inStock: true,
+  },
+  {
+    id: "s2",
+    name: "A5 Grid Notebook",
+    category: "Notebooks",
+    description: "160 pages, flexible cover, 5mm grid",
+    price: 25,
+    stock: 8,
+    inStock: true,
+  },
+  {
+    id: "s3",
+    name: "Spiral Hardcover Notebook",
+    category: "Notebooks",
+    description: "120 pages, B5 size, premium spiral binding",
+    price: 120,
+    stock: 5,
+    inStock: true,
+  },
+  {
+    id: "s4",
+    name: "Reynolds 045 Ball Pen",
+    category: "Pens",
+    description: "Smooth writing, pack of 5, blue ink",
+    price: 25,
+    stock: 20,
+    inStock: true,
+  },
+  {
+    id: "s5",
+    name: "Cello Finegrip Gel Pen",
+    category: "Pens",
+    description: "0.7mm tip, comfortable grip, black ink",
+    price: 15,
+    stock: 15,
+    inStock: true,
+  },
+  {
+    id: "s6",
+    name: "Pilot V5 Hi-Tecpoint Pen",
+    category: "Pens",
+    description: "Precision 0.5mm tip, liquid ink, blue",
+    price: 45,
+    stock: 6,
+    inStock: true,
+  },
+  {
+    id: "s7",
+    name: "A4 Plastic L-Folder",
+    category: "Folders",
+    description: "Transparent, pack of 10, holds up to 30 sheets",
+    price: 30,
+    stock: 10,
+    inStock: true,
+  },
+  {
+    id: "s8",
+    name: "Expanding Accordion File Folder",
+    category: "Folders",
+    description: "13 pockets, A4 size, elastic band closure",
+    price: 55,
+    stock: 7,
+    inStock: true,
+  },
+  {
+    id: "s9",
+    name: "Box File A4",
+    category: "Files",
+    description: "Lever arch mechanism, spine label, 7cm width",
+    price: 60,
+    stock: 9,
+    inStock: true,
+  },
+  {
+    id: "s10",
+    name: "Kangaro DS-45 Stapler",
+    category: "Staplers",
+    description: "Desktop stapler, staples up to 25 sheets",
+    price: 85,
+    stock: 4,
+    inStock: true,
+  },
+  {
+    id: "s11",
+    name: "Staple Pins Pack of 1000",
+    category: "Staplers",
+    description: "Standard 26/6 pins, fits most desktop staplers",
+    price: 25,
+    stock: 20,
+    inStock: true,
+  },
+  {
+    id: "s12",
+    name: "Whitener Correction Pen",
+    category: "Correction",
+    description: "Quick-dry formula, fine metal tip, 7ml",
+    price: 20,
+    stock: 14,
+    inStock: true,
+  },
+  {
+    id: "s13",
+    name: "Nataraj Eraser Pack of 3",
+    category: "Erasers",
+    description: "Dust-free, smudge-free, works on pencil & ink",
+    price: 15,
+    stock: 25,
+    inStock: true,
+  },
+  {
+    id: "s14",
+    name: "Kneadable Eraser",
+    category: "Erasers",
+    description: "Moldable putty eraser for sketching & art",
+    price: 30,
+    stock: 10,
+    inStock: true,
+  },
+];
